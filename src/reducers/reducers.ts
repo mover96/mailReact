@@ -28,7 +28,7 @@ type VisibilityFilterAction =
 const { SHOW_ALL } = VisibilityFilters
 
 function visibilityFilter(state = SHOW_ALL, action: VisibilityFilterAction) {
-  logState(state);
+  //logState(state);
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter

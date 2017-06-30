@@ -28,6 +28,7 @@ type VisibilityFilterAction =
 const { SHOW_ALL } = VisibilityFilters
 
 function visibilityFilter(state = SHOW_ALL, action: VisibilityFilterAction) {
+  logState(state);
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter
@@ -37,6 +38,7 @@ function visibilityFilter(state = SHOW_ALL, action: VisibilityFilterAction) {
 }
 
 function todos(state: any = [], action: TodoAction) {
+  //logState(state);
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -62,3 +64,9 @@ export const todoApp: Reducer<any> = combineReducers({
   visibilityFilter,
   todos
 })
+
+function logState(state: any) {
+  console.log('Current State:\n');
+  console.log(state);
+  console.log('----------------\n')
+}

@@ -3,9 +3,17 @@ import { connect } from 'react-redux'
 import { setVisibilityFilter } from '../actions/actions'
 import { Link } from '../presentational/Link'
 
-const mapStateToProps = (state: any, ownProps: any) => {
+export interface StateProps {
+    visibilityFilter: string
+}
+
+export interface FilterLinkProps {
+    filter: string
+}
+
+const mapStateToProps = (state: StateProps, ownProps: FilterLinkProps) => {
     return {
-        active: ownProps.filter === state.setVisibilityFilter
+        active: ownProps.filter === state.visibilityFilter
     }
 }
 

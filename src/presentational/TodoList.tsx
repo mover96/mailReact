@@ -13,6 +13,7 @@ export const TodoList: React.SFC<TodoListProps> = (props) => {
     return (
         <ul>
             {props.todos.map(todo => (
+                //onClick here is just a parameter
                 <Todo key={todo.id} {...todo} onClick={() => props.onTodoClick(todo.id)} />
             ))}
         </ul>

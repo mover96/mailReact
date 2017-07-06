@@ -1,11 +1,11 @@
 import * as React from "react";
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { todoApp } from './reducers/reducers'
+import { createStore, applyMiddleware } from 'redux'
+import { emailApp } from './reducers/reducers'
 import { App } from './components/App'
 
-let store = createStore(todoApp)
+let store = createStore(emailApp)
 
 render(
   <Provider store={store}>

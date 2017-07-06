@@ -1,68 +1,37 @@
 import { combineReducers } from 'redux'
 import { Reducer } from 'redux'
 
-import { TodoInterface } from '../interfaces/Todo'
 import {
-  ADD_TODO,
-  TOGGLE_TODO,
-  SET_VISIBILITY_FILTER,
-  VisibilityFilters
+  ADD_EMAIL
 } from '../actions/actions'
 
+//importing types
 import { 
-    AddTodo,
-    ToggleTodo,
-    SetVisibilityFilter,
+    AddEmail,
     OtherAction
 } from '../actions/actions'
 
-type TodoAction = 
-    AddTodo |
-    ToggleTodo |
+type AddEmailAction = 
+    AddEmail |
     OtherAction
 
-type VisibilityFilterAction = 
-    SetVisibilityFilter |
-    OtherAction
-
-const { SHOW_ALL } = VisibilityFilters
-
-function visibilityFilter(state = SHOW_ALL, action: VisibilityFilterAction) {
-  //logState(state);
+function emails(state: any = [], action: AddEmailAction) {
+  logState(state);
   switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter
-    default:
-      return state
-  }
-}
-
-function todos(state: any = [], action: TodoAction) {
-  //logState(state);
-  switch (action.type) {
-    case ADD_TODO:
+    case ADD_EMAIL:
       return [
         ...state,
         {
-          text: action.text,
-          completed: false,
-          id: action.id
+          email: action.email
         }
       ]
-    case TOGGLE_TODO:
-      return state.map((todo: TodoInterface) =>
-        (todo.id === action.id) 
-          ? {...todo, completed: !todo.completed}
-          : todo 
-      )
     default:
       return state
   }
 }
 
-export const todoApp: Reducer<any> = combineReducers({
-  visibilityFilter,
-  todos
+export const emailApp: Reducer<any> = combineReducers({
+  emails,
 })
 
 function logState(state: any) {

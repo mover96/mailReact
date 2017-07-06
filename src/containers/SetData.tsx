@@ -1,37 +1,20 @@
-import * as React from 'react'
-
 import { connect } from 'react-redux'
 
-import { toggleTodo } from '../actions/actions'
+import { Data } from './Data'
+import { addEmail } from '../actions/actions'
+import { EmailType } from '../interfaces/Email'
 
-class SetData extends React.Component<null, any> {
-  constructor() {
-    super();
-  }
-
-  componentWillMount() {
-    //dispatch settting emails for both 
-  }
-
-  render() {
-
-  }
+export interface MapDispatchToPropsReturn {
+  initData: (email: EmailType) => void
 }
 
-const mapStateToProps = (state: any) => {
+const mapDispatchToProps = (dispatch: any): MapDispatchToPropsReturn => {
   return {
-    
-  }
-}
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    
+    initData: (email) => {
+      console.log('dispatching... ' + email);
+      dispatch(addEmail(email));
     }
   }
 }
 
-export const SetData = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList)
+export const SetData = connect(null, mapDispatchToProps)(Data)

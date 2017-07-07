@@ -54,17 +54,4 @@ export class Data extends React.Component<DataProps, any> {
 
       </div>
   }
-
-  
-
-//   render() {
-//     const FifStyle = {
-//         width: '50%',
-//         height: '100%',
-//         display: 'inline-block'
-//     }
-//     return <div>
-//     <div style={FifStyle}>test</div>
-//     </div>
-//   }
 }

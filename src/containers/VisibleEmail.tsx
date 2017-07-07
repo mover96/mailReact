@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 
 import { EmailList } from '../components/EmailList'
-//import {  } from '../actions/actions'
 import { EmailType } from '../interfaces/Email'
+
+import { FilterObj } from '../reducers/reducers'
 
 export interface MstpOwnProps {
   tag: string
@@ -13,28 +14,22 @@ const getTaggedEmails = (emails: any[], tag: string) => {
     return e.tag === tag
   });
   return a;
-//   var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+}
 
-//   var longWords = words.filter(function(word){
-//   return word.length > 6;
-// })
-// return longWords;
+const getFilter = (filters: FilterObj[], tag: string) => {
+  for (var i = 0; i < filters.length; i++) {
+    if (filters[i].tag === tag) {
+      return filters[i].filter;
+    }
+  }
+  return '';
 }
 
 const mapStateToProps = (state: any, ownProps: MstpOwnProps): any => {
   return {
-    emails: getTaggedEmails(state.emails, ownProps.tag)
+    emails: getTaggedEmails(state.emails, ownProps.tag),
+    filter: getFilter(state.filters, ownProps.tag)
   }
 }
-
-// export interface MapDispatchToPropsReturn {
-//   initData: (emailObj: JSON, key: string) => void
-// }
-
-// const mapDispatchToProps = (dispatch: any): MapDispatchToPropsReturn => {
-//   return {
-    
-//   }
-// }
 
 export const VisibleEmail = connect(mapStateToProps, null)(EmailList)

@@ -5,6 +5,10 @@ import { createStore, applyMiddleware } from 'redux'
 import { emailApp } from './reducers/reducers'
 import { App } from './components/App'
 
+import { runTests } from './reducers/tests'
+
+runTests();
+
 let store = createStore(emailApp)
 
 render(

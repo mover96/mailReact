@@ -6,7 +6,7 @@ export interface EmailProps {
     email: EmailType
 }
 
-export const Email: React.SFC<any> = (props) => { //cheated here
+export const Email: React.SFC<EmailProps> = (props) => {
     const messageCountStyle = {
         fontSize: '25px'
     }
@@ -22,17 +22,16 @@ export const Email: React.SFC<any> = (props) => { //cheated here
     const subjectStyle = {
         fontSize: '18px'
     }
-    console.log('LMAO' + props);
     return (
         <div>
-            {console.log('HEREERERERE' + props)}
-            <div style={messageCountStyle}>Message {props.email.email.number}</div>
-            <div style={senderStyle}>Sender: {props.email.email.sender}</div>
-            <p style={timeStyle}>Time Sent: {props.email.email.timeSent}</p>
-            <p style={senderStyle}>Subject: {props.email.email.subject}</p>
+            <div style={messageCountStyle}>Message {props.email.number}</div>
+            <div style={senderStyle}>Sender: {props.email.sender}</div>
+            <p style={timeStyle}>Time Sent: {props.email.timeSent}</p>
+            <p style={senderStyle}>Subject: {props.email.subject}</p>
             <br />
-            {props.email.email.message}
+            <span dangerouslySetInnerHTML={{__html: props.email.message}}></span>
             <br />
+            <hr />
         </div>
     )
 }

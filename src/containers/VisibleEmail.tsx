@@ -10,7 +10,7 @@ export interface MstpOwnProps {
 
 const getTaggedEmails = (emails: any[], tag: string) => {
   var a = emails.filter(e => {
-    return e.email.tag === tag
+    return e.tag === tag
   });
   return a;
 //   var words = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
@@ -22,8 +22,6 @@ const getTaggedEmails = (emails: any[], tag: string) => {
 }
 
 const mapStateToProps = (state: any, ownProps: MstpOwnProps): any => {
-  console.log('STATE IS ' + state.emails[0].email.tag);
-  console.log('TAGGED MAILS ' + getTaggedEmails(state.emails, ownProps.tag))
   return {
     emails: getTaggedEmails(state.emails, ownProps.tag)
   }

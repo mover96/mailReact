@@ -9,19 +9,18 @@ export interface DataProps {
 export class Data extends React.Component<DataProps, any> {
 
   componentWillMount() {
-      console.log('will mount')
     const patientMailData = document.getElementById('config').getAttribute('data-patientmail');
     const clinicMailData = document.getElementById('config').getAttribute('data-clinicMail');
 
     //dispatch settting emails for both 
     const initData = this.props.initData;
     
-
+    //todo: layout
     const genEmails = (resObj: any, tag: string): void => {
 
         const parseEmailObj = (emailObj: any, tag2: string, idx: number): EmailType => {
             let email: EmailType = {
-                tag : tag2,
+            tag : tag2,
             number : idx,
             sender : emailObj.sender.emailAddress.address,
             message : emailObj.body.content,
@@ -33,8 +32,7 @@ export class Data extends React.Component<DataProps, any> {
             return email;
         }
       const initData = this.props.initData;
-      let x = 1;
-      console.log(resObj);
+      let x = 0;
       resObj.forEach((e: any) => {
         if(e.sender.emailAddress.name != tag) {
             initData(parseEmailObj(e, tag, ++x));
@@ -49,7 +47,10 @@ export class Data extends React.Component<DataProps, any> {
   
 
   render() {
-      return<div>
+      const DivStyle = {
+          display: 'none'
+      }
+      return <div style={DivStyle}>
 
       </div>
   }

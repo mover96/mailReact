@@ -16,14 +16,14 @@ type AddEmailAction =
     OtherAction
 
 function emails(state: any = [], action: AddEmailAction) {
-  logState(state);
+  //logState(state);
   switch (action.type) {
     case ADD_EMAIL:
       return [
         ...state,
-        {
-          email: action.email
-        }
+        
+          action.email
+        
       ]
     default:
       return state

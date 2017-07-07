@@ -11,7 +11,6 @@ export interface MapDispatchToPropsReturn {
 const mapDispatchToProps = (dispatch: any): MapDispatchToPropsReturn => {
   return {
     initData: (email) => {
-      console.log('dispatching... ' + email);
       dispatch(addEmail(email));
     }
   }

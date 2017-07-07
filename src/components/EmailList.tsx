@@ -4,14 +4,13 @@ import { Email } from './Email'
 import { EmailType } from '../interfaces/Email'
 
 export interface EmailListProps {
-    emails: any[] //cheated here
+    emails: EmailType[]
 }
 
 export const EmailList: React.SFC<EmailListProps> = (props) => {
     return <ul>
         {props.emails.map(email => {
-            return <Email email={email}/>
+            return <li key={email.number + email.sender}> <Email email={email}/> </li>
         })}
-        {console.log('ffuu' + props.emails[0].email.tag)}
     </ul>
 }

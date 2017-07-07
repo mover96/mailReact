@@ -15,8 +15,14 @@ export const App: React.SFC<null> = () => {
     return (
         <div>
             <SetData />
-            <div style={FifStyle}><MailList tag={'patient'}/></div>
-            <div style={FifStyle}><MailList tag={'clinic'}/></div>
+            <div style={FifStyle}>
+                <h2>Patient Mail</h2>
+                <MailList tag={'patient'}/>
+            </div>
+            <div style={FifStyle}>
+                <h2>Clinic Mail</h2>
+                <MailList tag={'clinic'}/>
+            </div>
         </div>
     )
 }
